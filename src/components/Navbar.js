@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
-const Navbar = () => {
+const Navbar = ({ menuComp1, menuComp2 }) => {
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-warning">
@@ -15,10 +16,12 @@ const Navbar = () => {
                                 <a className="nav-link active" aria-current="page" href="/">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/">Link</a>
+                                {/* <a className="nav-link" href="/">{props.menuComp1}</a> */}
+                                <a className="nav-link" href="/">{menuComp1}</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/">ApnaText</a>
+                                {/* <a className="nav-link" href="/">{props.menuComp2}</a> */}
+                                <a className="nav-link" href="/">{menuComp2}</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/">ApnaContact</a>
@@ -36,3 +39,16 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+Navbar.propTypes = {
+    menuComp1: PropTypes.string,
+    menuComp2: PropTypes.string.isRequired
+}
+
+
+//it will not use for further in react.js
+
+// Navbar.defaultProps = {
+//     menuComp1: 'Durgseh',
+//     menuComp2: 'Durgseh123',
+// }
