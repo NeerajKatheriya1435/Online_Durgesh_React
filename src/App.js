@@ -29,6 +29,14 @@ function App() {
     const totalEmails = text.match(emailRegex);
     setEmail(totalEmails);
   }
+  const handleExtraSpace = () => {
+    let newText = text.split(/[ ]+/)
+    setText(newText.join(" "));
+  }
+  const handleCopyText = () => {
+    let seletedText = document.getElementById('floatingTextarea2').value
+    navigator.clipboard.writeText(seletedText);
+  }
   return (
     <>
       {/* <Heading /> */}
@@ -42,10 +50,12 @@ function App() {
         <button onClick={handleLowerCase} className="btn btn-success my-2 mx-2">Convert To LowerCase</button>
         <button onClick={handleClearText} className="btn btn-success my-2 mx-2">Clear Text</button>
         <button onClick={handleEmail} className="btn btn-success my-2 mx-2">Find Emails</button>
+        <button onClick={handleExtraSpace} className="btn btn-success my-2 mx-2">Remove Extra Space</button>
+        <button onClick={handleCopyText} className="btn btn-success my-2 mx-2">Copy Text</button>
       </div>
       {/* <Navbar menuComp1={menuItem1} menuComp2={menuItem2} /> */}
       <div className="container">
-        {email.map((elem) => (<div>{elem}</div>))}
+        {email ? email.map((elem, index) => (<div key={index}>{elem}</div>)) : (<div>No Emails Found!</div>)}
       </div>
     </>
   );
