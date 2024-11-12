@@ -4,6 +4,7 @@ import './App.css';
 // import Heading from './components/Heading';
 
 import Navbar from "./components/Navbar"
+// import Accodian from './components/Accodian';
 
 function App() {
 
@@ -34,8 +35,12 @@ function App() {
     setText(newText.join(" "));
   }
   const handleCopyText = () => {
-    let seletedText = document.getElementById('floatingTextarea2').value
-    navigator.clipboard.writeText(seletedText);
+    // let seletedText = document.getElementById('floatingTextarea2').value
+    // navigator.clipboard.writeText(seletedText);
+
+    var text = document.getElementById('floatingTextarea2')
+    text.select()
+    navigator.clipboard.writeText(text.value);
   }
   return (
     <>
@@ -57,6 +62,22 @@ function App() {
       <div className="container">
         {email ? email.map((elem, index) => (<div key={index}>{elem}</div>)) : (<div>No Emails Found!</div>)}
       </div>
+      <div className="container">
+        <h3 className="pageSummary">Page Summary</h3>
+        Total Words : {text.split(' ').length} <br />
+        Total Alphabets: {text.length} <br />
+        Total Time to Read: {text.split(' ').length / 2} seconds to read <br />
+        Page Summary : {text}
+      </div>
+
+
+
+
+
+
+
+
+      {/* <Accodian /> */}
     </>
   );
 }
