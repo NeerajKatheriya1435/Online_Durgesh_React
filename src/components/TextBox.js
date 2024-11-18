@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
+
 export default function TextBox(props) {
 
     const [text, setText] = useState('')
     const [email, setEmail] = useState([])
-
 
     const handleChange = (e) => {
         setText(e.target.value);
