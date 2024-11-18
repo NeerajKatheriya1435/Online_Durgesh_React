@@ -12,28 +12,34 @@ export default function TextBox(props) {
     const handleUpperCase = () => {
         let newText = text.toUpperCase();
         setText(newText);
+        props.handleAlert("Success", "Converted into uppercase")
     }
     const handleLowerCase = () => {
         let newText = text.toLowerCase();
         setText(newText);
+        props.handleAlert("Success", "Converted into lowecase")
     }
     const handleClearText = () => {
         setText('');
+        props.handleAlert("Success", "Text Cleared")
     }
 
     const handleEmail = () => {
         const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
         const totalEmails = text.match(emailRegex);
         setEmail(totalEmails);
+        props.handleAlert("success", "Email found")
     }
     const handleExtraSpace = () => {
         let newText = text.split(/[ ]+/)
         setText(newText.join(" "));
+        props.handleAlert("success", "Removed extra spaces")
     }
     const handleCopyText = () => {
         var text = document.getElementById('floatingTextarea2')
         text.select()
         navigator.clipboard.writeText(text.value);
+        props.handleAlert("success", "Copied text")
     }
     return (
         <div>
